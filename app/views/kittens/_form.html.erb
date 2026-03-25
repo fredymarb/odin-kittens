@@ -1,0 +1,38 @@
+<%= form_with model: kitten do |f| %>
+
+  <% if kitten.errors.any? %>
+    <div>
+      <h2><%= pluralize(kitten.errors.count, "error") %> prevented saving:</h2>
+      <ul>
+        <% kitten.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :age %>
+    <%= f.number_field :age %>
+  </div>
+
+  <div>
+    <%= f.label :cuteness %>
+    <%= f.number_field :cuteness %>
+  </div>
+
+  <div>
+    <%= f.label :softness %>
+    <%= f.number_field :softness %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+
+<% end %>
