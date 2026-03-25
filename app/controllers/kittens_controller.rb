@@ -27,7 +27,7 @@ class KittensController < ApplicationController
     if @kitten.save
       redirect_to @kitten, notice: "Kitten created!"
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity, alert: "Oops failed to create kitten."
     end
   end
 
@@ -41,14 +41,14 @@ class KittensController < ApplicationController
     if @kitten.update(kitten_params)
       redirect_to @kitten, notice: "Kitten updated successfully."
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity, alert: "Oops, failed to update kitten."
     end
   end
 
   def destroy
     @kitten = Kitten.find(params[:id])
     @kitten.destroy
-    redirect_to kittens_path
+    redirect_to kittens_path, notice: "Kitten deleted successfully!"
   end
 
   private
