@@ -1,9 +1,0 @@
-<h1><%= @kitten.name %></h1>
-
-<p>Age: <%= @kitten.age %></p>
-<p>Cuteness: <%= @kitten.cuteness %></p>
-<p>Softness: <%= @kitten.softness %></p>
-
-<%= link_to "Edit", edit_api_v1_kitten_path(@kitten) %> |
-<%= link_to "Back", api_v1_kittens_path %> |
-<%= link_to "Delete", api_v1_kitten_path(@kitten), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>

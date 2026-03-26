@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  namespace :api do
-    namespace :v1 do
-      root "kittens#index"
+
+  # web
+  resources :kittens
+
+  # api calls
+  constraints subdomain: "api" do
+    namespace :v1, defaults: { format: :json } do
       resources :kittens
     end
   end
@@ -16,5 +20,5 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  root "api/v1/kittens#index"
+  root "kittens#index"
 end
