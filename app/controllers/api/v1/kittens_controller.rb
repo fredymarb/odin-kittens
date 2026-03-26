@@ -1,4 +1,4 @@
-class KittensController < ApplicationController
+class Api::V1::KittensController < ApplicationController
   def index
     @kittens = Kitten.all
 
@@ -25,7 +25,7 @@ class KittensController < ApplicationController
     @kitten = Kitten.new(kitten_params)
 
     if @kitten.save
-      redirect_to @kitten, notice: "Kitten created!"
+      redirect_to [ :api, :v1, @kitten ], notice: "Kitten created!"
     else
       render :new, status: :unprocessable_entity, alert: "Oops failed to create kitten."
     end
@@ -39,7 +39,7 @@ class KittensController < ApplicationController
     @kitten = Kitten.find(params[:id])
 
     if @kitten.update(kitten_params)
-      redirect_to @kitten, notice: "Kitten updated successfully."
+      redirect_to [ :api, :v1, @kitten ], notice: "Kitten updated successfully."
     else
       render :edit, status: :unprocessable_entity, alert: "Oops, failed to update kitten."
     end
@@ -48,7 +48,7 @@ class KittensController < ApplicationController
   def destroy
     @kitten = Kitten.find(params[:id])
     @kitten.destroy
-    redirect_to kittens_path, notice: "Kitten deleted successfully!"
+    redirect_to [ :api, :v1, :kittens ], notice: "#{@kitten.name} deleted successfully!"
   end
 
   private
