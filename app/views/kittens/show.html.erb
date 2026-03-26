@@ -6,4 +6,9 @@
 
 <%= link_to "Edit", edit_kitten_path(@kitten) %> |
 <%= link_to "Back", kittens_path %> |
-<%= link_to "Delete", kitten_path(@kitten), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+<%= link_to "Delete", kitten_path(@kitten), 
+    data: { 
+      turbo_method: :delete, 
+      turbo_confirm: "Are you sure?" 
+    } 
+%>
